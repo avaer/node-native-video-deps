@@ -1,6 +1,6 @@
 {
   "name": "native-video-deps",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Node native video libffmpeg dependencies",
   "main": "index.js",
   "scripts": {
