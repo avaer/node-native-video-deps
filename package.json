@@ -4,7 +4,8 @@
   "description": "Node native video libffmpeg dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node postinstall.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/modulesio/node-native-video-deps/issues"
   },
-  "homepage": "https://github.com/modulesio/node-native-video-deps#readme"
+  "homepage": "https://github.com/modulesio/node-native-video-deps#readme",
+  "dependencies": {
+    "unzip": "^0.1.11"
+  }
 }
