@@ -19,54 +19,41 @@ const rimraf = require('rimraf');
       const platform = os.platform();
       switch (platform) {
         case 'win32': {
-          ['macos', 'linux', 'android', 'ios'].forEach(p => {
-            rimraf(path.join(__dirname, 'lib', p), err => {
+          ['macos', 'linux', 'android', 'ios', 'arm64'].forEach(p => {
+            rimraf(path.join(__dirname, lib, p), err => {
               if (err) {
                 throw err;
               }
             });
-          });
-          rimraf(path.join(__dirname, 'lib2'), err => {
-            if (err) {
-              throw err;
-            }
           });
           break;
         }
         case 'darwin': {
-          ['windows', 'linux', 'android', 'ios'].forEach(p => {
-            rimraf(path.join(__dirname, 'lib', p), err => {
+          ['windows', 'linux', 'android', 'ios', 'arm64'].forEach(p => {
+            rimraf(path.join(__dirname, lib, p), err => {
               if (err) {
                 throw err;
               }
             });
-          });
-          rimraf(path.join(__dirname, 'lib2'), err => {
-            if (err) {
-              throw err;
-            }
           });
           break;
         }
         case 'linux': {
           if (process.arch === 'x64') {
-            ['windows', 'macos', 'android', 'ios'].forEach(p => {
-              rimraf(path.join(__dirname, 'lib', p), err => {
+            ['windows', 'macos', 'android', 'ios', 'arm64'].forEach(p => {
+              rimraf(path.join(__dirname, lib, p), err => {
                 if (err) {
                   throw err;
                 }
               });
             });
-            rimraf(path.join(__dirname, 'lib2'), err => {
-              if (err) {
-                throw err;
-              }
-            });
-          } else {
-            rimraf(path.join(__dirname, 'lib'), err => {
-              if (err) {
-                throw err;
-              }
+          } else if (process.arch === 'arm64') {
+            ['windows', 'macos', 'linux', 'android', 'ios'].forEach(p => {
+              rimraf(path.join(__dirname, lib, p), err => {
+                if (err) {
+                  throw err;
+                }
+              });
             });
           }
           break;
